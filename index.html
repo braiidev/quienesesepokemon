@@ -31,10 +31,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:linear-gradient(to bottom,#ee3a3a 0 46%,#0d1330 46% 54%,#f5f5f5 54% 100%);
   animation:drift ease-in-out infinite alternate}
 @keyframes drift{to{transform:translateY(-46px) rotate(28deg)}}
-
 main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18px 70px}
 
-/* ---------- botones / UI base ---------- */
+/* ---------- botones ---------- */
 .btn{font-family:'Titan One';letter-spacing:.5px;font-size:1rem;color:var(--ink);
   background:var(--yellow);border:3px solid var(--ink);border-radius:14px;
   padding:.75rem 1.5rem;box-shadow:var(--hard);cursor:pointer;transition:transform .12s,box-shadow .12s}
@@ -61,14 +60,13 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .kicker{display:inline-block;font-weight:900;font-size:.78rem;letter-spacing:.28em;color:var(--yellow);
   border:2px solid var(--yellow);border-radius:999px;padding:.4em 1.1em;transform:rotate(-1.5deg)}
 .logo{font-family:'Titan One';color:var(--yellow);line-height:.95;margin:20px 0 8px;transform:rotate(-2deg);
-  font-size:clamp(2.1rem,6.4vw,3.6rem);
-  -webkit-text-stroke:1.5px #173e8f;
+  font-size:clamp(2.1rem,6.4vw,3.6rem);-webkit-text-stroke:1.5px #173e8f;
   text-shadow:3px 3px 0 var(--blue),7px 7px 0 rgba(4,8,26,.45)}
 .logo .big{display:block;font-size:1.28em}
 .divider{width:52px;height:52px;margin:14px auto;animation:rays 9s linear infinite}
 .tagline{font-weight:800;color:#c9d4ff;margin:0}
 
-/* ---------- paneles setup ---------- */
+/* ---------- setup ---------- */
 .setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:26px}
 .panel{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:20px;
   padding:22px;box-shadow:10px 10px 0 rgba(4,8,26,.45)}
@@ -83,7 +81,7 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
   border-radius:999px;padding:.35em .7em;font-weight:900;animation:pop .3s cubic-bezier(.2,.9,.3,1.3) both}
 .chip button{border:none;background:none;font-size:1rem;cursor:pointer;color:#a33;font-weight:900;padding:0 0 0 .3em}
 .empty{color:#8a90ad;font-weight:800;font-size:.9rem}
-.season-opts{display:grid;gap:10px;margin-bottom:16px}
+.season-opts{display:grid;gap:10px;margin-bottom:14px}
 .opt{display:flex;align-items:center;gap:10px;border:3px solid var(--ink);border-radius:14px;
   padding:10px 14px;background:#fff;cursor:pointer;font-weight:900;transition:transform .12s}
 .opt:hover{transform:translateX(3px)}
@@ -101,9 +99,10 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
   border:3px solid var(--ink);border-radius:50%;transition:.2s}
 .switch input:checked+i{background:var(--yellow)}
 .switch input:checked+i::after{left:25px}
+.rules-mini{font-size:.82rem;font-weight:800;color:#6a7194;margin:6px 0 12px}
 .foot{text-align:center;color:#93a0d6;font-weight:800;font-size:.82rem;margin-top:34px}
 
-/* ---------- marcador ---------- */
+/* ---------- marcador / badges ---------- */
 .scorebar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0}
 .s-chip{display:inline-flex;align-items:center;gap:.35em;background:var(--paper);color:var(--ink);
   border:3px solid var(--ink);border-radius:999px;padding:.35em .8em;font-weight:900}
@@ -111,6 +110,12 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .s-chip.on{outline:3px solid var(--yellow);transform:scale(1.06)}
 .s-chip.bump{animation:bump .5s}
 @keyframes bump{40%{transform:scale(1.22)}}
+.badge{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:999px;
+  padding:.35em .9em;font-weight:900;box-shadow:0 4px 0 rgba(4,8,26,.45);display:inline-flex;align-items:center}
+.stake{background:var(--green);color:#fff}
+.stake.min{background:var(--red)}
+.stake b{font-family:'Titan One';margin-left:.35em}
+.stake.bump{animation:bump .4s}
 
 /* ---------- ruleta ---------- */
 .h2{font-family:'Titan One';color:var(--yellow);text-align:center;margin:8px 0 2px;
@@ -133,8 +138,6 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 /* ---------- ronda ---------- */
 .topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .topbar .spacer{flex:1}
-.badge{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:999px;
-  padding:.35em .9em;font-weight:900;box-shadow:0 4px 0 rgba(4,8,26,.45);display:inline-flex;align-items:center}
 .timer-pill.low{background:var(--red);color:#fff;animation:blink .6s steps(2) infinite}
 @keyframes blink{50%{opacity:.55}}
 .timerbar{height:10px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;border:2px solid rgba(13,19,48,.7)}
@@ -153,7 +156,8 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 #pkmImg{position:absolute;left:50%;top:50%;width:70%;transform:translate(-50%,-50%);object-fit:contain;
   filter:brightness(0) drop-shadow(0 14px 18px rgba(0,0,0,0));transition:filter .9s ease;
   animation:float 3.6s ease-in-out infinite}
-#pkmImg.revealed{filter:brightness(1) drop-shadow(0 14px 18px rgba(0,0,0,.35));animation:none;transform:translate(-50%,-50%) scale(1.03);transition:filter .9s ease,transform .5s ease}
+#pkmImg.revealed{filter:brightness(1) drop-shadow(0 14px 18px rgba(0,0,0,.35));animation:none;
+  transform:translate(-50%,-50%) scale(1.03);transition:filter .9s ease,transform .5s ease}
 @keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-53.5%)}}
 .qmark{position:absolute;top:6%;right:8%;font-family:'Titan One';font-size:3.2rem;color:var(--yellow);
   -webkit-text-stroke:2px var(--ink);transform:rotate(14deg);transition:opacity .4s,transform .4s;
@@ -166,24 +170,29 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 @keyframes wobble{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(20deg)}}
 .loader p{font-weight:900;margin:0;text-shadow:0 2px 0 rgba(0,0,0,.4)}
 
+.stake-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.stake-row .hint{font-size:.8rem;font-weight:800;color:#aab8ef}
 .clues{display:grid;gap:12px;perspective:700px;margin-bottom:14px}
-.clue{display:grid;grid-template-columns:46px 1fr;grid-template-rows:auto auto;align-items:center;
-  background:#fff;color:var(--ink);border:3px solid var(--ink);border-left:11px solid var(--c,#999);
-  border-radius:16px;padding:12px 16px;box-shadow:6px 6px 0 rgba(4,8,26,.45);
-  animation:cardIn .55s cubic-bezier(.2,.9,.3,1.25) both}
+.clue{display:grid;grid-template-columns:46px 1fr;align-items:center;background:#fff;color:var(--ink);
+  border:3px solid var(--ink);border-left:11px solid var(--c,#999);border-radius:16px;padding:12px 16px;
+  box-shadow:6px 6px 0 rgba(4,8,26,.45);animation:cardIn .55s cubic-bezier(.2,.9,.3,1.25) both;transition:transform .2s}
 .clue:nth-child(2){animation-delay:.13s}.clue:nth-child(3){animation-delay:.26s}
 @keyframes cardIn{from{opacity:0;transform:translateY(16px) rotateX(-70deg)}}
+.clue.open{transform:scale(1.02)}
 .c-blue{--c:#4fc3f7}.c-yellow{--c:var(--yellow)}.c-red{--c:var(--red)}
-.clue-ico{grid-row:1/3;font-size:1.7rem;text-align:center}
-.clue-lbl{font-size:.7rem;letter-spacing:.16em;font-weight:900;text-transform:uppercase;color:#5a6284}
-.clue-val{font-family:'Titan One';font-size:1.2rem;display:flex;gap:6px;flex-wrap:wrap;align-items:center;line-height:1.25}
-.clue-val.xl{font-size:2rem;color:var(--blue)}
+.clue-ico{font-size:1.7rem;text-align:center}
+.clue-lbl{font-size:.7rem;letter-spacing:.16em;font-weight:900;text-transform:uppercase;color:#5a6284;display:flex;gap:8px;align-items:center}
+.cost{background:var(--yellow);color:var(--ink);border:2px solid var(--ink);border-radius:999px;
+  padding:.05em .55em;font-size:.68rem;letter-spacing:0}
+.clue-val{font-family:'Titan One';font-size:1.15rem;display:flex;gap:6px;flex-wrap:wrap;align-items:center;line-height:1.3;min-height:36px;margin-top:2px}
 .clue-val small{font-family:'Nunito';font-weight:800;color:#6a7194;font-size:.8rem}
+.letter-big{font-family:'Titan One';font-size:2rem;color:var(--blue)}
 .type-chip{font:900 .85rem 'Nunito';color:#fff;padding:4px 12px;border-radius:999px;
   border:2px solid rgba(13,19,48,.85);text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.g-f{color:#ff5fa2}.g-m{color:#3f8ef7}
 .tries{display:flex;gap:8px;margin:4px 0 14px;align-items:center}
 .tries-label{font-weight:900;font-size:.8rem;color:#c9d4ff;letter-spacing:.1em;margin-right:4px}
-.mini-ball{width:26px;height:26px;transition:.3s;filter:none}
+.mini-ball{width:26px;height:26px;transition:.3s}
 .mini-ball.used{filter:grayscale(1);opacity:.3;transform:scale(.8) rotate(20deg)}
 .guessrow{display:flex;gap:10px}
 .guessrow input{flex:1;min-width:0;padding:.85rem 1rem;font:800 1.05rem 'Nunito';border:3px solid var(--ink);
@@ -195,20 +204,37 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .linkbtn:hover{color:#fff}
 .result{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:20px;
   padding:20px;box-shadow:8px 8px 0 rgba(4,8,26,.45);text-align:center;animation:pop .45s cubic-bezier(.2,.9,.3,1.4) both}
-.result h2{font-family:'Titan One';margin:0 0 8px;font-size:1.5rem}
+.result h2{font-family:'Titan One';margin:0 0 8px;font-size:1.5rem;text-transform:uppercase}
 .result h2 b{color:var(--blue)}
-.result .types{display:flex;gap:6px;justify-content:center;margin:6px 0}
+.result .types{display:flex;gap:6px;justify-content:center;margin:6px 0;flex-wrap:wrap}
 .result p{font-weight:900;margin:8px 0 16px}
 .pts{background:var(--green);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:.15em .7em;font-family:'Titan One'}
+
+/* ---------- campeón ---------- */
+.win-wrap{max-width:560px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.crown{font-size:4.4rem;animation:crown 1.4s ease-in-out infinite;filter:drop-shadow(0 6px 0 rgba(4,8,26,.4))}
+@keyframes crown{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-16px) rotate(6deg)}}
+.win-title{font-family:'Titan One';font-size:clamp(2rem,7vw,3.4rem);margin:0;color:var(--yellow);
+  text-transform:uppercase;line-height:1.05;-webkit-text-stroke:1.5px #173e8f;
+  text-shadow:3px 3px 0 var(--blue),6px 6px 0 rgba(4,8,26,.45);transform:rotate(-2deg)}
+.win-title span{font-size:1.2em}
+.win-score{font-weight:900;font-size:1.2rem;margin:0;color:#fff}
+.podium{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:20px;
+  box-shadow:10px 10px 0 rgba(4,8,26,.45);padding:14px;width:min(92vw,460px);display:grid;gap:8px}
+.pod-row{display:flex;align-items:center;gap:10px;font-weight:900;border:3px solid transparent;border-radius:12px;padding:.5em .8em;background:#f4f1e4}
+.pod-row.first{background:#fff3c0;border-color:var(--ink);box-shadow:4px 4px 0 rgba(4,8,26,.3)}
+.pod-row .medal{font-size:1.25rem;width:1.6em;text-align:center}
+.pod-row b{flex:1;text-align:left}
+.pod-pts{font-family:'Titan One';color:var(--blue)}
+.win-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
 #btnMute{position:fixed;top:14px;right:14px;z-index:50}
 #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,90px);z-index:70;background:var(--ink);
   border:3px solid var(--yellow);color:#fff;font-weight:900;padding:.7em 1.3em;border-radius:999px;transition:.3s;opacity:0}
 #toast.show{transform:translate(-50%,0);opacity:1}
 #confetti{position:fixed;inset:0;z-index:60;pointer-events:none}
-
 @media (prefers-reduced-motion:reduce){
-  .rays,.float-ball,#pkmImg,.divider,.qmark{animation:none!important}
+  .rays,.float-ball,#pkmImg,.divider,.qmark,.crown{animation:none!important}
 }
 </style>
 </head>
@@ -225,7 +251,7 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
       <span class="kicker">🎡 RULETA PASAMANO · MODO FIESTA</span>
       <h1 class="logo">¿QUIÉN ES<span class="big">ESE POKÉMON?</span></h1>
       <div class="pokeball divider"></div>
-      <p class="tagline">Adivina la silueta con 3 pistas · Temporadas 1 y 2 · Pasa el teléfono 📱</p>
+      <p class="tagline">Adivina la silueta · Sin pistas +4 · Primer jugador en llegar a la meta gana 🏆</p>
     </header>
 
     <div class="setup-grid">
@@ -245,7 +271,10 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
           <label class="opt"><input type="radio" name="season" value="t2"><span>📺 Temporada 2 · Johto <small>#152–251</small></span></label>
           <label class="opt"><input type="radio" name="season" value="both" checked><span>🎲 Ambas temporadas <small>#001–251</small></span></label>
         </div>
-        <div class="opt-row">Intentos por ronda
+        <div class="opt-row">🏁 Meta de puntos
+          <select id="selTarget"><option>25</option><option selected>50</option><option>75</option><option>100</option></select>
+        </div>
+        <div class="opt-row">🎯 Intentos por ronda
           <select id="selTries"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
         </div>
         <div class="opt-row">⏱ Contrarreloj (45 s)
@@ -254,17 +283,18 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
         <div class="opt-row">🔊 Efectos de sonido
           <label class="switch"><input type="checkbox" id="tglSound" checked><i></i></label>
         </div>
-        <br>
+        <p class="rules-mini">Puntos: sin pistas <b>+4</b> · 1 pista <b>+3</b> · 2 pistas <b>+2</b> · 3 pistas <b>+1</b></p>
         <button class="btn red big full" id="btnStart">¡EMPEZAR PARTIDA!</button>
       </div>
     </div>
-    <p class="foot">Datos en vivo de <b>PokeAPI</b> · Sin imágenes precargadas: cada ronda es una sorpresa</p>
+    <p class="foot">Datos en vivo de <b>PokeAPI</b> · Se activa pantalla completa al empezar ⛶</p>
   </section>
 
   <!-- ============ RULETA ============ -->
   <section id="screen-wheel" hidden>
     <h2 class="h2">¿Quién responde esta ronda?</h2>
     <p class="sub">Gira la ruleta y pasa el dispositivo 🔄</p>
+    <p class="sub" id="targetLine">🏆 Primero en llegar a 50 pts gana la partida</p>
     <div class="scorebar"></div>
     <div class="center-col">
       <div class="wheel-wrap">
@@ -282,363 +312,4 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 
   <!-- ============ RONDA ============ -->
   <section id="screen-round" hidden>
-    <div class="topbar">
-      <button class="icon-btn" id="btnHome" title="Volver a ajustes">🏠</button>
-      <span class="badge">RONDA <b id="roundNum">1</b></span>
-      <span class="badge" id="turnChip"></span>
-      <span class="spacer"></span>
-      <span class="badge timer-pill" id="timerBox">⏱ <b id="timerTxt">45</b>s</span>
-    </div>
-    <div class="timerbar"><i id="timerFill"></i></div>
-    <div class="scorebar"></div>
-
-    <div class="round-grid">
-      <div class="stage" id="stage">
-        <div class="rays"></div>
-        <div class="glow"></div>
-        <img id="pkmImg" alt="Silueta misteriosa" style="opacity:0">
-        <div class="qmark" id="qmark">?</div>
-        <div class="loader" id="loader">
-          <div class="pokeball"></div>
-          <p id="loaderTxt">El Profesor Oak busca un Pokémon…</p>
-        </div>
-      </div>
-
-      <div class="side">
-        <div class="clues" id="clues" hidden>
-          <div class="clue c-blue"><span class="clue-ico">🧬</span><span class="clue-lbl">Pista 1 · Tipo</span><div class="clue-val" id="clueType"></div></div>
-          <div class="clue c-yellow"><span class="clue-ico">🔤</span><span class="clue-lbl">Pista 2 · Primera letra</span><div class="clue-val xl" id="clueLetter"></div></div>
-          <div class="clue c-red"><span class="clue-ico">📺</span><span class="clue-lbl">Pista 3 · Temporada</span><div class="clue-val" id="clueSeason"></div></div>
-        </div>
-        <div class="tries" id="tries"></div>
-        <form class="guessrow" id="guessForm" hidden>
-          <input id="guessInput" placeholder="Ej: Pikachu…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
-          <button class="btn" type="submit" id="btnSend">ENVIAR</button>
-        </form>
-        <div class="result" id="resultBox" hidden>
-          <h2 id="resultTitle"></h2>
-          <div class="types" id="resultTypes"></div>
-          <p id="resultSub"></p>
-          <button class="btn red big" id="btnNext">🎡 Pasar y girar</button>
-        </div>
-        <button class="linkbtn" id="btnGiveUp" hidden>🏳️ Rendirse (revela sin puntos)</button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<script>
-'use strict';
-const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
-const TAU=Math.PI*2;
-const escapeHtml=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-/* ---------- normalización del input ---------- */
-const strip =s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const canon =s=>strip(s).replace(/[^a-z0-9]/g,'');       // "Mr. Mime"→"mrmime", "Ho-Oh"→"hooh"
-function displayName(raw){
-  const map={'nidoran-f':'Nidoran ♀','nidoran-m':'Nidoran ♂','farfetchd':"Farfetch'd",'mr-mime':'Mr. Mime'};
-  if(map[raw])return map[raw];
-  return raw.split('-').map(w=>w?w[0].toUpperCase()+w.slice(1):'').join('-');
-}
-
-const TYPE_ES={normal:'Normal',fire:'Fuego',water:'Agua',grass:'Planta',electric:'Eléctrico',ice:'Hielo',
-fighting:'Lucha',poison:'Veneno',ground:'Tierra',flying:'Volador',psychic:'Psíquico',bug:'Bicho',
-rock:'Roca',ghost:'Fantasma',dragon:'Dragón',dark:'Siniestro',steel:'Acero',fairy:'Hada'};
-const TYPE_COLOR={normal:'#A8A77A',fire:'#EE8130',water:'#6390F0',electric:'#F7D02C',grass:'#7AC74C',
-ice:'#96D9D6',fighting:'#C22E28',poison:'#A33EA1',ground:'#E2BF65',flying:'#A98FF3',psychic:'#F95587',
-bug:'#A6B91A',rock:'#B6A136',ghost:'#735797',dragon:'#6F35FC',dark:'#705746',steel:'#B7B7CE',fairy:'#D685AD'};
-const PCOLORS=['#ffcb05','#ff6b6b','#4fc3f7','#7ed957','#c58fff','#ffa94d','#ff8fb1','#5ce1e6'];
-
-const state={players:[],scores:{},current:0,round:0,season:'both',maxTries:3,timerOn:true,timeLimit:45,
-sound:true,spinning:false,rot:Math.random()*TAU,pokemon:null,lastId:null,triesLeft:0,revealed:true,timerId:null,timeLeft:0};
-let roundToken=0;
-
-/* ---------- audio (WebAudio, sin assets) ---------- */
-let AC=null;
-function ac(){AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC;}
-function tone(f,d=.1,type='square',g=.05,when=0,slide=0){
-  if(!state.sound)return;
-  try{const a=ac(),o=a.createOscillator(),v=a.createGain(),t=a.currentTime+when;
-  o.type=type;o.frequency.setValueAtTime(f,t);
-  if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);
-  v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0001,t+d);
-  o.connect(v).connect(a.destination);o.start(t);o.stop(t+d+.02);}catch(e){}}
-const sfx={
-  click:()=>tone(620,.06,'triangle',.05),
-  tick:()=>tone(950,.035,'square',.028),
-  spin:()=>tone(280,.5,'triangle',.05,0,760),
-  win:()=>[523,659,784,1047].forEach((f,i)=>tone(f,.14,'triangle',.08,i*.09)),
-  lose:()=>tone(220,.4,'sawtooth',.06,0,70)
-};
-$('#btnMute').onclick=()=>{state.sound=!state.sound;$('#btnMute').textContent=state.sound?'🔊':'🔇';};
-
-/* ---------- navegación / toast ---------- */
-function show(id){$$('main > section').forEach(s=>s.hidden=s.id!==id);window.scrollTo({top:0});}
-let toastT;function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');
-  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2300);}
-
-/* ---------- setup: jugadores ---------- */
-function renderChips(){
-  const box=$('#playerChips');box.innerHTML='';
-  if(!state.players.length){box.innerHTML='<span class="empty">Añade al menos 2 jugadores…</span>';return;}
-  state.players.forEach((p,i)=>{
-    const c=document.createElement('span');c.className='chip';
-    c.innerHTML=`<i class="dot" style="background:${p.color}"></i>${escapeHtml(p.name)}<button title="Quitar">✕</button>`;
-    c.querySelector('button').onclick=()=>{state.players.splice(i,1);renderChips();};
-    box.appendChild(c);
-  });
-}
-function addPlayer(){
-  const inp=$('#playerInput'),n=inp.value.trim();
-  if(!n)return;
-  if(state.players.length>=8)return toast('⚠️ Máximo 8 jugadores');
-  if(state.players.some(p=>p.name.toLowerCase()===n.toLowerCase()))return toast('⚠️ Ese nombre ya está');
-  state.players.push({name:n,color:PCOLORS[state.players.length%PCOLORS.length]});
-  inp.value='';inp.focus();renderChips();sfx.click();
-}
-$('#btnAdd').onclick=addPlayer;
-$('#playerInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addPlayer();}});
-$$('input[name=season]').forEach(r=>r.onchange=()=>state.season=r.value);
-$('#selTries').onchange=e=>state.maxTries=+e.target.value;
-$('#tglTimer').onchange=e=>state.timerOn=e.target.checked;
-$('#tglSound').onchange=e=>{state.sound=e.target.checked;};
-
-$('#btnStart').onclick=()=>{
-  if(state.players.length<2)return toast('⚠️ Necesitas al menos 2 jugadores');
-  state.scores={};state.players.forEach(p=>state.scores[p.name]=0);
-  state.round=0;state.lastId=null;state.rot=Math.random()*TAU;
-  sfx.spin();show('screen-wheel');renderScorebars();
-  $('#turnBanner').hidden=true;$('#btnSpin').disabled=false;
-  drawWheel();
-};
-
-/* ---------- marcador ---------- */
-function renderScorebars(pulse=-1){
-  $$('.scorebar').forEach(el=>{
-    el.innerHTML=state.players.map((p,i)=>
-      `<span class="s-chip${i===state.current?' on':''}"><i class="dot" style="background:${p.color}"></i>${escapeHtml(p.name)}<b>${state.scores[p.name]||0}</b></span>`).join('');
-    if(pulse>=0&&el.children[pulse])el.children[pulse].classList.add('bump');
-  });
-}
-
-/* ---------- ruleta (canvas) ---------- */
-const wheelCv=$('#wheel'),wctx=wheelCv.getContext('2d'),WS=680;
-wheelCv.width=WS;wheelCv.height=WS;
-function pointerIdx(rot){const seg=TAU/state.players.length;
-  return Math.floor((((-Math.PI/2-rot)%TAU)+TAU)%TAU/seg)%state.players.length;}
-function drawWheel(rot=state.rot,winner=-1){
-  const n=state.players.length;if(!n)return;
-  const c=WS/2,R=WS/2-16,seg=TAU/n;
-  wctx.clearRect(0,0,WS,WS);
-  for(let i=0;i<n;i++){
-    const a0=rot+i*seg;
-    wctx.beginPath();wctx.moveTo(c,c);wctx.arc(c,c,R,a0,a0+seg);wctx.closePath();
-    wctx.fillStyle=state.players[i].color;wctx.fill();
-    wctx.lineWidth=5;wctx.strokeStyle='#0d1330';wctx.stroke();
-  }
-  for(let i=0;i<n;i++){
-    const mid=rot+i*seg+seg/2,name=state.players[i].name;
-    const fs=Math.min(42,Math.max(18,Math.floor(seg*R*0.62/Math.max(5,name.length)*1.7)));
-    wctx.save();wctx.translate(c,c);wctx.rotate(mid);
-    wctx.font=`900 ${fs}px Nunito,sans-serif`;wctx.fillStyle='#0d1330';
-    wctx.textAlign='right';wctx.textBaseline='middle';
-    wctx.fillText(name,R-28,0);wctx.restore();
-  }
-  if(winner>=0){
-    const a0=rot+winner*seg;
-    wctx.beginPath();wctx.moveTo(c,c);wctx.arc(c,c,R,a0,a0+seg);wctx.closePath();
-    wctx.lineWidth=12;wctx.strokeStyle='#fff';wctx.stroke();
-  }
-  wctx.beginPath();wctx.arc(c,c,R+7,0,TAU);wctx.lineWidth=13;wctx.strokeStyle='#0d1330';wctx.stroke();
-}
-$('#btnSpin').onclick=function spin(){
-  if(state.spinning||state.players.length<2)return;
-  state.spinning=true;this.disabled=true;$('#turnBanner').hidden=true;sfx.spin();
-  const start=state.rot,end=start+(4+Math.random()*3)*TAU+Math.random()*TAU;
-  const dur=3000+Math.random()*900,t0=performance.now();let last=-1;
-  (function frame(t){
-    const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);
-    state.rot=start+(end-start)*e;
-    const idx=pointerIdx(state.rot);
-    if(idx!==last){last=idx;sfx.tick();}
-    drawWheel();
-    if(k<1)return requestAnimationFrame(frame);
-    state.spinning=false;state.current=idx;drawWheel(state.rot,idx);
-    const p=state.players[idx];
-    $('#btnSpin').disabled=false;
-    const b=$('#turnBanner');b.hidden=false;
-    const nm=$('#bannerName');nm.textContent=p.name;nm.style.color=p.color;
-    b.style.borderColor=p.color;sfx.win();renderScorebars();$('#btnGo').focus();
-  })(performance.now());
-};
-$('#btnGo').onclick=()=>{sfx.click();show('screen-round');startRound();};
-
-/* ---------- Pokémon (PokeAPI) ---------- */
-function randomId(){
-  const r=state.season==='t1'?[1,151]:state.season==='t2'?[152,251]:[1,251];
-  let id;do{id=r[0]+Math.floor(Math.random()*(r[1]-r[0]+1));}while(id===state.lastId);
-  return state.lastId=id;
-}
-async function loadPokemon(id){
-  const res=await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  if(!res.ok)throw new Error('api');
-  const data=await res.json();
-  const art=(data.sprites.other&&data.sprites.other['official-artwork']&&data.sprites.other['official-artwork'].front_default)||data.sprites.front_default;
-  await new Promise((ok,bad)=>{const im=new Image();im.onload=ok;im.onerror=bad;im.src=art;});
-  return {id,name:data.name,art,types:data.types.slice().sort((a,b)=>a.slot-b.slot).map(t=>t.type.name)};
-}
-
-/* ---------- ronda ---------- */
-const LOADER_HTML='<div class="pokeball"></div><p id="loaderTxt">El Profesor Oak busca un Pokémon…</p>';
-async function startRound(){
-  const my=++roundToken;
-  state.round++;$('#roundNum').textContent=state.round;
-  const p=state.players[state.current];
-  $('#turnChip').innerHTML=`<i class="dot" style="background:${p.color}"></i>Responde: <b>${escapeHtml(p.name)}</b>`;
-  state.revealed=false;state.triesLeft=state.maxTries;state.pokemon=null;
-  renderTries();
-  $('#clues').hidden=true;$('#guessForm').hidden=true;$('#btnGiveUp').hidden=true;$('#resultBox').hidden=true;
-  const ld=$('#loader');ld.innerHTML=LOADER_HTML;ld.hidden=false;
-  const img=$('#pkmImg');img.classList.remove('revealed');img.style.opacity=0;img.removeAttribute('src');
-  $('#qmark').classList.remove('off');
-  stopTimer();paintTimer();$('#timerBox').style.visibility=state.timerOn?'visible':'hidden';
-  $('#timerBox').classList.remove('low');$('#timerFill').classList.remove('low');$('#timerFill').style.width='100%';
-  renderScorebars();
-  await loadAndShow(randomId(),my);
-}
-async function loadAndShow(id,my){
-  try{
-    const pk=await loadPokemon(id);
-    if(my!==roundToken)return;
-    state.pokemon=pk;
-    const img=$('#pkmImg');img.src=pk.art;img.style.opacity=1;
-    $('#loader').hidden=true;
-    // pistas
-    const ct=$('#clueType');ct.innerHTML='';
-    pk.types.forEach(ty=>{const s=document.createElement('span');s.className='type-chip';
-      s.style.background=TYPE_COLOR[ty]||'#999';s.textContent=TYPE_ES[ty]||ty;ct.appendChild(s);});
-    $('#clueLetter').textContent=displayName(pk.name)[0].toUpperCase();
-    $('#clueSeason').innerHTML=(pk.id<=151?'Temporada 1 · Kanto':'Temporada 2 · Johto')
-      +`&nbsp;<small>#${String(pk.id).padStart(3,'0')}</small>`;
-    $('#clues').hidden=false;$('#guessForm').hidden=false;$('#btnGiveUp').hidden=false;
-    $('#guessInput').value='';$('#guessInput').focus();
-    if(state.timerOn)startTimer();
-  }catch(e){
-    if(my!==roundToken)return;
-    $('#loader').innerHTML='<p>⚠️ El Profesor Oak no responde…<br><br><button class="btn small" id="btnRetry">Reintentar</button></p>';
-    $('#btnRetry').onclick=()=>{$('#loader').innerHTML=LOADER_HTML;loadAndShow(id,my);};
-  }
-}
-function renderTries(){
-  const box=$('#tries');box.innerHTML='<span class="tries-label">INTENTOS</span>';
-  for(let i=0;i<state.maxTries;i++){
-    const b=document.createElement('span');
-    b.className='pokeball mini-ball'+(i<state.triesLeft?'':' used');box.appendChild(b);
-  }
-}
-
-/* ---------- temporizador ---------- */
-function startTimer(){stopTimer();state.timeLeft=state.timeLimit;
-  state.timerId=setInterval(()=>{
-    state.timeLeft-=.1;
-    if(state.timeLeft<=0){state.timeLeft=0;paintTimer();stopTimer();if(!state.revealed)finish(false,'tiempo');}
-    else paintTimer();
-  },100);}
-function stopTimer(){if(state.timerId){clearInterval(state.timerId);state.timerId=null;}}
-function paintTimer(){
-  const r=state.timeLeft/state.timeLimit,low=state.timerOn&&state.timeLeft<=10;
-  $('#timerFill').style.width=(r*100)+'%';
-  $('#timerTxt').textContent=Math.ceil(state.timeLeft);
-  $('#timerBox').classList.toggle('low',low);$('#timerFill').classList.toggle('low',low);
-}
-
-/* ---------- envío y resolución ---------- */
-$('#guessForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  if(state.revealed||!state.pokemon)return;
-  const g=canon($('#guessInput').value);
-  if(!g){flashForm();return;}
-  if(g===canon(state.pokemon.name))finish(true);
-  else wrongGuess();
-});
-function flashForm(){const f=$('#guessForm');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake');}
-function wrongGuess(){
-  state.triesLeft--;renderTries();sfx.lose();flashForm();$('#guessInput').select();
-  if(state.triesLeft<=0)finish(false,'fallos');
-}
-$('#btnGiveUp').onclick=()=>finish(false,'rendido');
-
-function finish(won,reason=''){
-  if(state.revealed||!state.pokemon)return;
-  state.revealed=true;stopTimer();
-  const pk=state.pokemon,name=displayName(pk.name),p=state.players[state.current];
-  $('#guessForm').hidden=true;$('#btnGiveUp').hidden=true;
-  setTimeout(()=>{$('#pkmImg').classList.add('revealed');$('#qmark').classList.add('off');},320);
-  setTimeout(()=>{
-    if(won)sfx.win(),burstConfetti();else sfx.lose();
-    const box=$('#resultBox');box.hidden=false;
-    const rt=$('#resultTypes');rt.innerHTML=`<span class="type-chip" style="background:#0d1330">#${String(pk.id).padStart(3,'0')}</span>`;
-    pk.types.forEach(ty=>{const s=document.createElement('span');s.className='type-chip';
-      s.style.background=TYPE_COLOR[ty]||'#999';s.textContent=TYPE_ES[ty]||ty;rt.appendChild(s);});
-    if(won){
-      const pts=state.triesLeft;
-      state.scores[p.name]+=pts;
-      $('#resultTitle').innerHTML=`¡Es <b>${escapeHtml(name)}</b>!`;
-      $('#resultSub').innerHTML=`<span class="pts">+${pts} pt${pts>1?'s':''}</span> para <b>${escapeHtml(p.name)}</b> 🎉`;
-    }else{
-      const msg=reason==='tiempo'?'⏰ ¡Se acabó el tiempo!':reason==='rendido'?'🏳️ Turno rendido.':'💥 ¡Sin intentos!';
-      $('#resultTitle').innerHTML=`Era <b>${escapeHtml(name)}</b>…`;
-      $('#resultSub').textContent=`${msg} Sin puntos esta ronda.`;
-    }
-    renderScorebars(won?state.current:-1);
-    $('#btnNext').focus();
-  },560);
-}
-$('#btnNext').onclick=()=>{
-  sfx.click();show('screen-wheel');
-  $('#turnBanner').hidden=true;$('#btnSpin').disabled=false;
-  state.rot=Math.random()*TAU;drawWheel();$('#btnSpin').focus();
-};
-$('#btnHome').onclick=()=>{stopTimer();roundToken++;show('screen-setup');};
-
-/* ---------- confeti ---------- */
-const cCv=$('#confetti'),cCtx=cCv.getContext('2d');let parts=[],cRaf=null;
-function sizeC(){cCv.width=innerWidth;cCv.height=innerHeight;}
-addEventListener('resize',sizeC);sizeC();
-function burstConfetti(){
-  const cols=['#ffcb05','#ee3a3a','#4fc3f7','#7ed957','#ffffff'];
-  for(let i=0;i<150;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*220,y:innerHeight*.35,
-    vx:(Math.random()-.5)*11,vy:-Math.random()*9-3,g:.28,w:6+Math.random()*7,h:8+Math.random()*8,
-    r:Math.random()*TAU,vr:(Math.random()-.5)*.3,c:cols[i%cols.length],life:110+Math.random()*70});
-  if(!cRaf)loopC();
-}
-function loopC(){
-  cRaf=requestAnimationFrame(loopC);cCtx.clearRect(0,0,cCv.width,cCv.height);
-  parts=parts.filter(p=>p.life>0);
-  if(!parts.length){cancelAnimationFrame(cRaf);cRaf=null;return;}
-  for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.r+=p.vr;p.life--;
-    cCtx.save();cCtx.translate(p.x,p.y);cCtx.rotate(p.r);
-    cCtx.globalAlpha=Math.min(1,p.life/40);cCtx.fillStyle=p.c;
-    cCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cCtx.restore();}
-}
-
-/* ---------- fondo vivo ---------- */
-(function(){
-  const bg=$('#bg');
-  for(let i=0;i<9;i++){
-    const b=document.createElement('div');b.className='float-ball';
-    const s=30+Math.random()*70;
-    b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;top:${Math.random()*100}vh;
-      opacity:${(.07+Math.random()*.12).toFixed(2)};animation-duration:${(14+Math.random()*16).toFixed(1)}s;
-      animation-delay:${(-Math.random()*20).toFixed(1)}s`;
-    bg.appendChild(b);
-  }
-})();
-
-/* ---------- init ---------- */
-state.players.push({name:'Rojo',color:PCOLORS[0]},{name:'Azul',color:PCOLORS[1]});
-renderChips();
-</script>
-</body>
-</html>
+  
