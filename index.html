@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>¿Quién es ese Pokémon? · Ruleta Pasamano</title>
+<title>¿Quién es ese Pokémon?</title>
 <link rel="preconnect" href="https://pokeapi.co">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 @keyframes drift{to{transform:translateY(-46px) rotate(28deg)}}
 main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18px 70px}
 
-/* ---------- botones ---------- */
+/* ========== BOTONES ========== */
 .btn{font-family:'Titan One';letter-spacing:.5px;font-size:1rem;color:var(--ink);
   background:var(--yellow);border:3px solid var(--ink);border-radius:14px;
   padding:.75rem 1.5rem;box-shadow:var(--hard);cursor:pointer;transition:transform .12s,box-shadow .12s}
@@ -41,21 +41,23 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .btn:active{transform:translateY(2px);box-shadow:0 3px 0 rgba(4,8,26,.5)}
 .btn:disabled{opacity:.5;cursor:wait;transform:none}
 .btn.red{background:var(--red);color:#fff}.btn.blue{background:var(--blue);color:#fff}
+.btn.green{background:var(--green);color:#fff}
 .btn.small{font-size:.85rem;padding:.5rem .9rem;border-radius:11px}
 .btn.big{font-size:1.2rem;padding:.95rem 2rem}
 .btn.full{width:100%}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
 .icon-btn{background:var(--paper);border:3px solid var(--ink);border-radius:12px;font-size:1.1rem;
   width:42px;height:42px;cursor:pointer;box-shadow:0 4px 0 rgba(4,8,26,.5)}
 .icon-btn:hover{transform:translateY(-2px)}
 .dot{display:inline-block;width:.85em;height:.85em;border-radius:50%;border:2px solid var(--ink);margin-right:.45em;flex:none}
 
-/* ---------- pokeball CSS ---------- */
+/* ========== POKEBALL CSS ========== */
 .pokeball{position:relative;border-radius:50%;border:3px solid var(--ink);
   background:linear-gradient(to bottom,#ee3a3a 0 46%,#0d1330 46% 54%,#f5f5f5 54% 100%)}
 .pokeball::after{content:'';position:absolute;left:50%;top:50%;width:32%;height:32%;
   transform:translate(-50%,-50%);background:#fff;border:4px solid var(--ink);border-radius:50%}
 
-/* ---------- cabecera ---------- */
+/* ========== CABECERA ========== */
 .masthead{text-align:center;margin-bottom:26px}
 .kicker{display:inline-block;font-weight:900;font-size:.78rem;letter-spacing:.28em;color:var(--yellow);
   border:2px solid var(--yellow);border-radius:999px;padding:.4em 1.1em;transform:rotate(-1.5deg)}
@@ -66,7 +68,7 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .divider{width:52px;height:52px;margin:14px auto;animation:rays 9s linear infinite}
 .tagline{font-weight:800;color:#c9d4ff;margin:0}
 
-/* ---------- setup ---------- */
+/* ========== SETUP ========== */
 .setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:26px}
 .panel{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:20px;
   padding:22px;box-shadow:10px 10px 0 rgba(4,8,26,.45)}
@@ -102,7 +104,7 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .rules-mini{font-size:.82rem;font-weight:800;color:#6a7194;margin:6px 0 12px}
 .foot{text-align:center;color:#93a0d6;font-weight:800;font-size:.82rem;margin-top:34px}
 
-/* ---------- marcador / badges ---------- */
+/* ========== MARCADOR ========== */
 .scorebar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0}
 .s-chip{display:inline-flex;align-items:center;gap:.35em;background:var(--paper);color:var(--ink);
   border:3px solid var(--ink);border-radius:999px;padding:.35em .8em;font-weight:900}
@@ -116,26 +118,17 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .stake.min{background:var(--red)}
 .stake b{font-family:'Titan One';margin-left:.35em}
 .stake.bump{animation:bump .4s}
+.turn-indicator{background:var(--blue);color:#fff}
 
-/* ---------- ruleta ---------- */
-.h2{font-family:'Titan One';color:var(--yellow);text-align:center;margin:8px 0 2px;
-  font-size:clamp(1.4rem,4vw,2rem);text-shadow:2px 2px 0 var(--ink)}
-.sub{text-align:center;color:#c9d4ff;font-weight:800;margin:0 0 8px}
-.wheel-wrap{position:relative;width:min(82vw,350px);aspect-ratio:1;margin:20px auto}
-#wheel{width:100%;height:100%;filter:drop-shadow(0 14px 0 rgba(4,8,26,.5))}
-.pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:3;
-  width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;
-  border-top:26px solid var(--red);filter:drop-shadow(0 3px 0 var(--ink))}
-.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;z-index:2}
-.center-col{display:flex;flex-direction:column;align-items:center;gap:14px}
+/* ========== TURNO ========== */
 .turn-banner{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:18px;
   padding:16px 26px;text-align:center;box-shadow:8px 8px 0 rgba(4,8,26,.45);
-  animation:pop .45s cubic-bezier(.2,.9,.3,1.4) both}
+  animation:pop .45s cubic-bezier(.2,.9,.3,1.4) both;margin:20px auto;max-width:500px}
 .turn-banner p{margin:0 0 12px;font-size:1.15rem;font-weight:900}
 .turn-banner .pname{font-family:'Titan One';text-shadow:1px 1px 0 rgba(13,19,48,.35)}
 @keyframes pop{0%{opacity:0;transform:scale(.55)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
 
-/* ---------- ronda ---------- */
+/* ========== RONDA ========== */
 .topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .topbar .spacer{flex:1}
 .timer-pill.low{background:var(--red);color:#fff;animation:blink .6s steps(2) infinite}
@@ -209,8 +202,9 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 .result .types{display:flex;gap:6px;justify-content:center;margin:6px 0;flex-wrap:wrap}
 .result p{font-weight:900;margin:8px 0 16px}
 .pts{background:var(--green);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:.15em .7em;font-family:'Titan One'}
+.skip-info{font-size:.85rem;font-weight:800;color:#aab8ef;margin-top:8px}
 
-/* ---------- campeón ---------- */
+/* ========== FINAL ========== */
 .win-wrap{max-width:560px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
 .crown{font-size:4.4rem;animation:crown 1.4s ease-in-out infinite;filter:drop-shadow(0 6px 0 rgba(4,8,26,.4))}
 @keyframes crown{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-16px) rotate(6deg)}}
@@ -245,23 +239,24 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
 <div id="toast"></div>
 
 <main>
-  <!-- ============ SETUP ============ -->
+  <!-- ========== SETUP ========== -->
   <section id="screen-setup">
     <header class="masthead">
-      <span class="kicker">🎡 RULETA PASAMANO · MODO FIESTA</span>
+      <span class="kicker">🎮 MODO CLÁSICO</span>
       <h1 class="logo">¿QUIÉN ES<span class="big">ESE POKÉMON?</span></h1>
       <div class="pokeball divider"></div>
-      <p class="tagline">Adivina la silueta · Sin pistas +4 · Primer jugador en llegar a la meta gana 🏆</p>
+      <p class="tagline">Adivina la silueta · Primer jugador en llegar a 50 pts gana 🏆</p>
     </header>
 
     <div class="setup-grid">
       <div class="panel">
-        <h3>👥 Jugadores <small>(mínimo 2 · máx. 8)</small></h3>
+        <h3>👥 Jugadores <small>(1-8 jugadores)</small></h3>
         <div class="addrow">
           <input id="playerInput" placeholder="Nombre del entrenador/a…" maxlength="14" autocomplete="off">
           <button class="btn small" id="btnAdd">＋ Añadir</button>
         </div>
         <div class="chips" id="playerChips"></div>
+        <p class="rules-mini">💡 Deja vacío y usa "Jugador 1, 2, 3..." o añade nombres personalizados</p>
       </div>
 
       <div class="panel">
@@ -274,42 +269,523 @@ main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:26px 18p
         <div class="opt-row">🏁 Meta de puntos
           <select id="selTarget"><option>25</option><option selected>50</option><option>75</option><option>100</option></select>
         </div>
-        <div class="opt-row">🎯 Intentos por ronda
-          <select id="selTries"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
-        </div>
         <div class="opt-row">⏱ Contrarreloj (45 s)
           <label class="switch"><input type="checkbox" id="tglTimer" checked><i></i></label>
         </div>
         <div class="opt-row">🔊 Efectos de sonido
           <label class="switch"><input type="checkbox" id="tglSound" checked><i></i></label>
         </div>
-        <p class="rules-mini">Puntos: sin pistas <b>+4</b> · 1 pista <b>+3</b> · 2 pistas <b>+2</b> · 3 pistas <b>+1</b></p>
+        <p class="rules-mini">🎯 Puntos: sin pistas <b>+4</b> · 1 pista <b>+3</b> · 2 pistas <b>+2</b> · 3 pistas <b>+1</b><br>
+          ⏭️ Skip: pasa turno, misma pregunta · Si todos skip: nadie gana puntos</p>
         <button class="btn red big full" id="btnStart">¡EMPEZAR PARTIDA!</button>
       </div>
     </div>
-    <p class="foot">Datos en vivo de <b>PokeAPI</b> · Se activa pantalla completa al empezar ⛶</p>
+    <p class="foot">Datos en vivo de <b>PokeAPI</b></p>
   </section>
 
-  <!-- ============ RULETA ============ -->
-  <section id="screen-wheel" hidden>
-    <h2 class="h2">¿Quién responde esta ronda?</h2>
-    <p class="sub">Gira la ruleta y pasa el dispositivo 🔄</p>
-    <p class="sub" id="targetLine">🏆 Primero en llegar a 50 pts gana la partida</p>
+  <!-- ========== TURNO ========== -->
+  <section id="screen-turn" hidden>
+    <h2 class="h2">Orden de turnos establecido</h2>
+    <p class="sub">Este orden se mantendrá durante toda la partida 🔄</p>
     <div class="scorebar"></div>
-    <div class="center-col">
-      <div class="wheel-wrap">
-        <div class="pointer"></div>
-        <canvas id="wheel"></canvas>
-        <div class="pokeball hub"></div>
-      </div>
-      <button class="btn big" id="btnSpin">¡GIRAR! 🎡</button>
-      <div class="turn-banner" id="turnBanner" hidden>
-        <p>¡<span class="pname" id="bannerName"></span>, te toca responder!</p>
-        <button class="btn blue" id="btnGo">Ver silueta ▶</button>
+    <div class="turn-banner" id="turnBanner">
+      <p>Comienza: <span class="pname" id="bannerName"></span></p>
+      <p style="font-size:.9rem;font-weight:800;color:#6a7194;margin:8px 0 0">Siguiente: <span id="nextName"></span></p>
+      <div class="btn-row" style="justify-content:center;margin-top:14px">
+        <button class="btn blue big" id="btnBegin">¡Comenzar! ▶</button>
       </div>
     </div>
   </section>
 
-  <!-- ============ RONDA ============ -->
+  <!-- ========== RONDA ========== -->
   <section id="screen-round" hidden>
-  
+    <div class="topbar">
+      <button class="icon-btn" id="btnHome" title="Volver a ajustes">🏠</button>
+      <span class="badge">RONDA <b id="roundNum">1</b></span>
+      <span class="badge turn-indicator" id="turnChip"></span>
+      <span class="badge">🏆 Meta: <b id="targetTxt">50</b></span>
+      <span class="spacer"></span>
+      <button class="btn small red" id="btnEndGame">🏁 Cerrar Juego</button>
+      <span class="badge timer-pill" id="timerBox">⏱ <b id="timerTxt">45</b>s</span>
+    </div>
+    <div class="timerbar"><i id="timerFill"></i></div>
+    <div class="scorebar"></div>
+
+    <div class="round-grid">
+      <div class="stage" id="stage">
+        <div class="rays"></div>
+        <div class="glow"></div>
+        <img id="pkmImg" alt="Silueta misteriosa" style="opacity:0">
+        <div class="qmark" id="qmark">?</div>
+        <div class="loader" id="loader">
+          <div class="pokeball"></div>
+          <p id="loaderTxt">El Profesor Oak busca un Pokémon…</p>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="stake-row">
+          <span class="badge stake">🎯 En juego: <b id="stakePts">+4</b></span>
+          <span class="hint">Cada pista revelada resta 1 punto</span>
+        </div>
+        <div class="clues" id="clues" hidden>
+          <div class="clue c-blue">
+            <span class="clue-ico">🧬</span>
+            <div>
+              <div class="clue-lbl">Pista 1 · Tipo <span class="cost">−1 pt</span></div>
+              <div class="clue-val" id="clueType"></div>
+            </div>
+          </div>
+          <div class="clue c-yellow">
+            <span class="clue-ico">🔤</span>
+            <div>
+              <div class="clue-lbl">Pista 2 · Primera letra <span class="cost">−1 pt</span></div>
+              <div class="clue-val" id="clueLetter"></div>
+            </div>
+          </div>
+          <div class="clue c-red">
+            <span class="clue-ico">📺</span>
+            <div>
+              <div class="clue-lbl">Pista 3 · Temporada <span class="cost">−1 pt</span></div>
+              <div class="clue-val" id="clueSeason"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tries" id="tries"></div>
+        <form class="guessrow" id="guessForm" hidden>
+          <input id="guessInput" placeholder="Ej: Pikachu…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+          <button class="btn" type="submit" id="btnSend">ENVIAR</button>
+        </form>
+        <div class="btn-row" style="margin-top:10px">
+          <button class="btn blue" id="btnSkip" hidden>⏭️ Skip (pasar turno)</button>
+        </div>
+        <div class="skip-info" id="skipInfo" hidden>⚠️ Todos hicieron skip · Nadie gana puntos</div>
+        <div class="result" id="resultBox" hidden>
+          <h2 id="resultTitle"></h2>
+          <div class="types" id="resultTypes"></div>
+          <p id="resultSub"></p>
+          <button class="btn red big" id="btnNext">Siguiente jugador ▶</button>
+        </div>
+        <button class="linkbtn" id="btnGiveUp" hidden>🏳️ Rendirse (revela sin puntos)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL ========== -->
+  <section id="screen-win" hidden>
+    <div class="win-wrap">
+      <div class="crown">🏆</div>
+      <h2 class="win-title">¡<span id="winName"></span><br>gana la partida!</h2>
+      <p class="win-score" id="winScore"></p>
+      <div class="podium" id="podium"></div>
+      <div class="win-btns">
+        <button class="btn red big" id="btnRematch">🔄 ¡Revancha!</button>
+        <button class="btn blue" id="btnToSetup">⚙️ Cambiar jugadores / reglas</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+'use strict';
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const escapeHtml=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ========== NORMALIZACIÓN DE NOMBRES ========== */
+const strip =s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+const canon =s=>strip(s).replace(/[_\-]/g,' ').replace(/\s+/g,' ').replace(/[^a-z0-9]/g,'');
+const ALIASES={
+  'nidoran-f':['nidoran','nidoranhembra','nidoranh','nidoranfemale','nidoranfem','nidoran f','nidoran ♀'],
+  'nidoran-m':['nidoran','nidoranmacho','nidoranm','nidoranmale','nidoran m','nidoran ♂'],
+  'mr-mime':['mrmime','mr mime','mime'],
+  'farfetchd':['farfetchd',"farfetch'd",'farfetch'],
+  'ho-oh':['hooh','ho oh','ho'],
+  'mime-jr':['mimejr','mime jr'],
+  'type-null':['typenull','type null','null'],
+  'tapu-koko':['tapukoko','tapu koko','koko'],
+  'tapu-lele':['tapulele','tapu lele','lele'],
+  'tapu-bulu':['tapubulu','tapu bulu','bulu'],
+  'tapu-fini':['tapufini','tapu fini','fini']
+};
+function isCorrect(g,pk){
+  const c=canon(g);
+  if(c===canon(pk.name))return true;
+  const aliases=ALIASES[pk.name]||[];
+  return aliases.some(a=>canon(a)===c);
+}
+function displayName(raw){
+  const map={'nidoran-f':'Nidoran ♀','nidoran-m':'Nidoran ♂','farfetchd':"Farfetch'd",'mr-mime':'Mr. Mime',
+    'ho-oh':'Ho-Oh','mime-jr':'Mime Jr.','type-null':'Type: Null','tapu-koko':'Tapu Koko',
+    'tapu-lele':'Tapu Lele','tapu-bulu':'Tapu Bulu','tapu-fini':'Tapu Fini'};
+  if(map[raw])return map[raw];
+  return raw.split('-').map(w=>w?w[0].toUpperCase()+w.slice(1):'').join(' ');
+}
+function displayHTML(pk){
+  return escapeHtml(displayName(pk.name))
+    .replace('♀','<b class="g-f">♀</b>').replace('♂','<b class="g-m">♂</b>');
+}
+
+const TYPE_ES={normal:'Normal',fire:'Fuego',water:'Agua',grass:'Planta',electric:'Eléctrico',ice:'Hielo',
+fighting:'Lucha',poison:'Veneno',ground:'Tierra',flying:'Volador',psychic:'Psíquico',bug:'Bicho',
+rock:'Roca',ghost:'Fantasma',dragon:'Dragón',dark:'Siniestro',steel:'Acero',fairy:'Hada'};
+const TYPE_COLOR={normal:'#A8A77A',fire:'#EE8130',water:'#6390F0',electric:'#F7D02C',grass:'#7AC74C',
+ice:'#96D9D6',fighting:'#C22E28',poison:'#A33EA1',ground:'#E2BF65',flying:'#A98FF3',psychic:'#F95587',
+bug:'#A6B91A',rock:'#B6A136',ghost:'#735797',dragon:'#6F35FC',dark:'#705746',steel:'#B7B7CE',fairy:'#D685AD'};
+const PCOLORS=['#ffcb05','#ff6b6b','#4fc3f7','#7ed957','#c58fff','#ffa94d','#ff8fb1','#5ce1e6'];
+
+const state={
+  players:[],scores:{},order:[],current:0,round:0,season:'both',target:50,timerOn:true,
+  timeLimit:45,sound:true,pokemon:null,lastId:null,cluesUsed:0,clueShown:[false,false,false],
+  clueContent:[],stake:4,revealed:true,timerId:null,timeLeft:0,skipCount:0,pendingWinner:null,
+  allSkipped:false
+};
+let roundToken=0;
+
+/* ========== AUDIO ========== */
+let AC=null;
+function ac(){AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC;}
+function tone(f,d=.1,type='square',g=.05,when=0,slide=0){
+  if(!state.sound)return;
+  try{const a=ac(),o=a.createOscillator(),v=a.createGain(),t=a.currentTime+when;
+  o.type=type;o.frequency.setValueAtTime(f,t);
+  if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);
+  v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0001,t+d);
+  o.connect(v).connect(a.destination);o.start(t);o.stop(t+d+.02);}catch(e){}}
+const sfx={
+  click:()=>tone(620,.06,'triangle',.05),
+  tick:()=>tone(950,.035,'square',.028),
+  win:()=>[523,659,784,1047].forEach((f,i)=>tone(f,.14,'triangle',.08,i*.09)),
+  lose:()=>tone(220,.4,'sawtooth',.06,0,70),
+  skip:()=>tone(440,.15,'triangle',.04)
+};
+$('#btnMute').onclick=()=>{state.sound=!state.sound;$('#btnMute').textContent=state.sound?'🔊':'🔇';};
+
+/* ========== NAVEGACIÓN ========== */
+function show(id){$$('main > section').forEach(s=>s.hidden=s.id!==id);window.scrollTo({top:0});}
+let toastT;function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2300);}
+
+/* ========== SETUP ========== */
+function renderChips(){
+  const box=$('#playerChips');box.innerHTML='';
+  if(!state.players.length){box.innerHTML='<span class="empty">Añade al menos 1 jugador…</span>';return;}
+  state.players.forEach((p,i)=>{
+    const c=document.createElement('span');c.className='chip';
+    c.innerHTML=`<i class="dot" style="background:${p.color}"></i>${escapeHtml(p.name)}<button title="Quitar">✕</button>`;
+    c.querySelector('button').onclick=()=>{state.players.splice(i,1);renderChips();};
+    box.appendChild(c);
+  });
+}
+function addPlayer(){
+  const inp=$('#playerInput'),n=inp.value.trim();
+  if(state.players.length>=8)return toast('⚠️ Máximo 8 jugadores');
+  const name=n||`Jugador ${state.players.length+1}`;
+  if(state.players.some(p=>p.name.toLowerCase()===name.toLowerCase()))return toast('⚠️ Ese nombre ya está');
+  state.players.push({name,color:PCOLORS[state.players.length%PCOLORS.length]});
+  inp.value='';inp.focus();renderChips();sfx.click();
+}
+$('#btnAdd').onclick=addPlayer;
+$('#playerInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addPlayer();}});
+$$('input[name=season]').forEach(r=>r.onchange=()=>state.season=r.value);
+$('#selTarget').onchange=e=>state.target=+e.target.value;
+$('#tglTimer').onchange=e=>state.timerOn=e.target.checked;
+$('#tglSound').onchange=e=>{state.sound=e.target.checked;};
+
+$('#btnStart').onclick=()=>{
+  if(state.players.length<1)return toast('⚠️ Necesitas al menos 1 jugador');
+  state.scores={};state.players.forEach(p=>state.scores[p.name]=0);
+  // Orden aleatorio inicial
+  state.order=[...state.players].sort(()=>Math.random()-0.5);
+  state.current=0;state.round=0;state.lastId=null;state.pendingWinner=null;
+  $('#targetTxt').textContent=state.target;
+  show('screen-turn');
+  const p=state.order[0];
+  const next=state.order[1]||state.order[0];
+  $('#bannerName').textContent=p.name;$('#bannerName').style.color=p.color;
+  $('#nextName').textContent=next.name;
+  renderScorebars();sfx.click();
+};
+$('#btnBegin').onclick=()=>{sfx.click();show('screen-round');startRound();};
+
+/* ========== MARCADOR ========== */
+function renderScorebars(pulse=-1){
+  $$('.scorebar').forEach(el=>{
+    el.innerHTML=state.order.map((p,i)=>
+      `<span class="s-chip${i===state.current?' on':''}"><i class="dot" style="background:${p.color}"></i>${escapeHtml(p.name)}<b>${state.scores[p.name]||0}</b></span>`).join('');
+    if(pulse>=0&&el.children[pulse])el.children[pulse].classList.add('bump');
+  });
+}
+
+/* ========== POKÉAPI ========== */
+function randomId(){
+  const r=state.season==='t1'?[1,151]:state.season==='t2'?[152,251]:[1,251];
+  let id;do{id=r[0]+Math.floor(Math.random()*(r[1]-r[0]+1));}while(id===state.lastId);
+  return state.lastId=id;
+}
+async function loadPokemon(id){
+  const res=await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  if(!res.ok)throw new Error('api');
+  const data=await res.json();
+  const art=(data.sprites.other&&data.sprites.other['official-artwork']&&data.sprites.other['official-artwork'].front_default)||data.sprites.front_default;
+  await new Promise((ok,bad)=>{const im=new Image();im.onload=ok;im.onerror=bad;im.src=art;});
+  return {id,name:data.name,art,types:data.types.slice().sort((a,b)=>a.slot-b.slot).map(t=>t.type.name)};
+}
+
+/* ========== PISTAS ========== */
+function buildClueContents(pk){
+  const t=document.createElement('span');
+  pk.types.forEach(ty=>{const s=document.createElement('span');s.className='type-chip';
+    s.style.background=TYPE_COLOR[ty]||'#999';s.textContent=TYPE_ES[ty]||ty;t.appendChild(s);});
+  const l=document.createElement('span');l.className='letter-big';
+  l.textContent=displayName(pk.name)[0].toUpperCase();
+  const s2=document.createElement('span');
+  s2.innerHTML=(pk.id<=151?'Temporada 1 · Kanto':'Temporada 2 · Johto')
+    +` <small>#${String(pk.id).padStart(3,'0')}</small>`;
+  state.clueContent=[t,l,s2];
+}
+function resetClueUI(){
+  ['clueType','clueLetter','clueSeason'].forEach((id,i)=>{
+    const v=$('#'+id);v.innerHTML='';
+    const b=document.createElement('button');
+    b.type='button';b.className='btn small';b.textContent='🔍 Revelar';
+    b.onclick=()=>{
+      if(state.revealed||state.clueShown[i]||!state.pokemon)return;
+      state.clueShown[i]=true;state.cluesUsed++;
+      b.remove();v.appendChild(state.clueContent[i]);
+      $$('.clue')[i].classList.add('open');
+      updateStake();sfx.click();
+    };
+    v.appendChild(b);
+  });
+  $$('.clue').forEach(c=>c.classList.remove('open'));
+}
+function updateStake(){
+  state.stake=Math.max(1,4-state.cluesUsed);
+  $('#stakePts').textContent='+'+state.stake;
+  const el=$('.stake');
+  el.classList.toggle('min',state.stake===1);
+  el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');
+}
+
+/* ========== RONDA ========== */
+const LOADER_HTML='<div class="pokeball"></div><p id="loaderTxt">El Profesor Oak busca un Pokémon…</p>';
+async function startRound(){
+  const my=++roundToken;
+  state.round++;$('#roundNum').textContent=state.round;
+  const p=state.order[state.current];
+  $('#turnChip').innerHTML=`<i class="dot" style="background:${p.color}"></i>${escapeHtml(p.name)}`;
+  state.revealed=false;state.pokemon=null;
+  state.cluesUsed=0;state.clueShown=[false,false,false];updateStake();
+  state.skipCount=0;state.allSkipped=false;
+  $('#clues').hidden=true;$('#guessForm').hidden=true;$('#btnSkip').hidden=true;
+  $('#btnGiveUp').hidden=true;$('#resultBox').hidden=true;$('#skipInfo').hidden=true;
+  const ld=$('#loader');ld.innerHTML=LOADER_HTML;ld.hidden=false;
+  const img=$('#pkmImg');img.classList.remove('revealed');img.style.opacity=0;img.removeAttribute('src');
+  $('#qmark').classList.remove('off');
+  stopTimer();paintTimer();
+  $('#timerBox').style.visibility=state.timerOn?'visible':'hidden';
+  $('#timerBox').classList.remove('low');$('#timerFill').classList.remove('low');$('#timerFill').style.width='100%';
+  renderScorebars();
+  await loadAndShow(randomId(),my);
+}
+async function loadAndShow(id,my){
+  try{
+    const pk=await loadPokemon(id);
+    if(my!==roundToken)return;
+    state.pokemon=pk;
+    const img=$('#pkmImg');img.src=pk.art;img.style.opacity=1;
+    $('#loader').hidden=true;
+    buildClueContents(pk);resetClueUI();
+    $('#clues').hidden=false;$('#guessForm').hidden=false;$('#btnSkip').hidden=false;$('#btnGiveUp').hidden=false;
+    $('#guessInput').value='';$('#guessInput').focus();
+    if(state.timerOn)startTimer();
+  }catch(e){
+    if(my!==roundToken)return;
+    $('#loader').innerHTML='<p>⚠️ El Profesor Oak no responde…<br><br><button class="btn small" id="btnRetry">Reintentar</button></p>';
+    $('#btnRetry').onclick=()=>{$('#loader').innerHTML=LOADER_HTML;loadAndShow(id,my);};
+  }
+}
+
+/* ========== TEMPORIZADOR ========== */
+function startTimer(){stopTimer();state.timeLeft=state.timeLimit;
+  state.timerId=setInterval(()=>{
+    state.timeLeft-=.1;
+    if(state.timeLeft<=0){state.timeLeft=0;paintTimer();stopTimer();if(!state.revealed)finish(false,'tiempo');}
+    else paintTimer();
+  },100);}
+function stopTimer(){if(state.timerId){clearInterval(state.timerId);state.timerId=null;}}
+function paintTimer(){
+  const r=state.timeLeft/state.timeLimit,low=state.timerOn&&state.timeLeft<=10;
+  $('#timerFill').style.width=(r*100)+'%';
+  $('#timerTxt').textContent=Math.ceil(state.timeLeft);
+  $('#timerBox').classList.toggle('low',low);$('#timerFill').classList.toggle('low',low);
+}
+
+/* ========== ENVÍO ========== */
+$('#guessForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(state.revealed||!state.pokemon)return;
+  const g=canon($('#guessInput').value);
+  if(!g){flashForm();return;}
+  if(isCorrect(g,state.pokemon))finish(true);
+  else wrongGuess();
+});
+function flashForm(){const f=$('#guessForm');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake');}
+function wrongGuess(){sfx.lose();flashForm();$('#guessInput').select();toast('❌ ¡Incorrecto! Intenta de nuevo');}
+$('#btnGiveUp').onclick=()=>finish(false,'rendido');
+
+/* ========== SKIP ========== */
+$('#btnSkip').onclick=()=>{
+  if(state.revealed)return;
+  state.skipCount++;
+  sfx.skip();
+  if(state.skipCount>=state.order.length){
+    state.allSkipped=true;
+    $('#skipInfo').hidden=false;
+    finish(false,'todos_skip');
+  }else{
+    nextTurn(false);
+  }
+};
+
+function nextTurn(won){
+  state.current=(state.current+1)%state.order.length;
+  if(!won){
+    startRound();
+  }
+}
+
+/* ========== FIN DE RONDA ========== */
+function finish(won,reason=''){
+  if(state.revealed||!state.pokemon)return;
+  state.revealed=true;stopTimer();
+  const pk=state.pokemon,p=state.order[state.current];
+  $('#guessForm').hidden=true;$('#btnSkip').hidden=true;$('#btnGiveUp').hidden=true;
+  setTimeout(()=>{$('#pkmImg').classList.add('revealed');$('#qmark').classList.add('off');},320);
+  setTimeout(()=>{
+    if(won){sfx.win();burstConfetti();}else sfx.lose();
+    $('#resultBox').hidden=false;
+    const rt=$('#resultTypes');
+    rt.innerHTML=`<span class="type-chip" style="background:#0d1330">#${String(pk.id).padStart(3,'0')}</span>`;
+    pk.types.forEach(ty=>{const s=document.createElement('span');s.className='type-chip';
+      s.style.background=TYPE_COLOR[ty]||'#999';s.textContent=TYPE_ES[ty]||ty;rt.appendChild(s);});
+    if(won){
+      const pts=state.stake;
+      state.scores[p.name]+=pts;
+      const nota=state.cluesUsed===0?' ¡A ciegas! 🙈':` · ${state.cluesUsed} pista${state.cluesUsed>1?'s':''}`;
+      const reached=state.scores[p.name]>=state.target;
+      $('#resultTitle').innerHTML=`¡Es <b>${displayHTML(pk)}</b>!`;
+      $('#resultSub').innerHTML=reached
+        ?`<span class="pts">+${pts} pts</span> para <b>${escapeHtml(p.name)}</b>${nota}<br>🏆 ¡<b>Llegó a la meta!</b>`
+        :`<span class="pts">+${pts} pt${pts>1?'s':''}</span> para <b>${escapeHtml(p.name)}</b>${nota}`;
+      const nx=$('#btnNext');
+      if(reached){state.pendingWinner=p;nx.textContent='🏆 ¡Ver al campeón!';}
+      else nx.textContent='Siguiente jugador ▶';
+      renderScorebars(state.current);
+    }else{
+      const msg=reason==='tiempo'?'⏰ ¡Se acabó el tiempo!':
+                reason==='rendido'?'🏳️ Turno rendido.':
+                reason==='todos_skip'?'⏭️ Todos hicieron skip.':
+                '💥 ¡Sin intentos!';
+      $('#resultTitle').innerHTML=`Era <b>${displayHTML(pk)}</b>…`;
+      $('#resultSub').textContent=`${msg} Sin puntos esta ronda.`;
+      $('#btnNext').textContent='Siguiente jugador ▶';
+      renderScorebars();
+    }
+    $('#btnNext').focus();
+  },560);
+}
+$('#btnNext').onclick=()=>{
+  sfx.click();
+  if(state.pendingWinner){const w=state.pendingWinner;state.pendingWinner=null;enterWin(w);return;}
+  nextTurn(false);
+};
+$('#btnHome').onclick=()=>{stopTimer();roundToken++;show('screen-setup');};
+
+/* ========== CERRAR JUEGO ========== */
+$('#btnEndGame').onclick=()=>{
+  if(!confirm('¿Seguro que quieres cerrar el juego? Se mostrará el ranking final.'))return;
+  stopTimer();
+  const order=[...state.order].sort((a,b)=>state.scores[b.name]-state.scores[a.name]);
+  const winner=order[0];
+  enterWin(winner,true);
+};
+
+/* ========== CAMPEÓN ========== */
+let rainTimer=null;
+function enterWin(p,forced=false){
+  stopRain();show('screen-win');
+  const wn=$('#winName');wn.textContent=p.name;wn.style.color=p.color;
+  $('#winScore').textContent=forced?`🏆 ${state.scores[p.name]} puntos (juego cerrado)`:
+                                    `🏆 ${state.scores[p.name]} puntos`;
+  const order=[...state.order].sort((a,b)=>state.scores[b.name]-state.scores[a.name]);
+  $('#podium').innerHTML=order.map((pl,i)=>{
+    const medal=['🥇','🥈','🥉'][i]||`${i+1}º`;
+    return `<div class="pod-row${i===0?' first':''}"><span class="medal">${medal}</span>
+      <i class="dot" style="background:${pl.color}"></i><b>${escapeHtml(pl.name)}</b>
+      <span class="pod-pts">${state.scores[pl.name]} pts</span></div>`;
+  }).join('');
+  sfx.win();setTimeout(()=>sfx.win(),450);
+  burstConfetti();setTimeout(burstConfetti,500);
+  rainTimer=setInterval(spawnRain,280);
+}
+function stopRain(){if(rainTimer){clearInterval(rainTimer);rainTimer=null;}}
+$('#btnRematch').onclick=()=>{stopRain();
+  state.scores={};state.order.forEach(p=>state.scores[p.name]=0);
+  state.current=0;state.round=0;state.lastId=null;state.pendingWinner=null;
+  renderScorebars();sfx.spin();
+  show('screen-turn');
+  const p=state.order[0];
+  const next=state.order[1]||state.order[0];
+  $('#bannerName').textContent=p.name;$('#bannerName').style.color=p.color;
+  $('#nextName').textContent=next.name;
+  toast('🔄 ¡Nueva partida! Mismos jugadores y orden');
+};
+$('#btnToSetup').onclick=()=>{stopRain();show('screen-setup');};
+
+/* ========== CONFETI ========== */
+const cCv=$('#confetti'),cCtx=cCv.getContext('2d');let parts=[],cRaf=null;
+function sizeC(){cCv.width=innerWidth;cCv.height=innerHeight;}
+addEventListener('resize',sizeC);sizeC();
+const CCOLS=['#ffcb05','#ee3a3a','#4fc3f7','#7ed957','#ffffff'];
+function burstConfetti(){
+  for(let i=0;i<150;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*220,y:innerHeight*.35,
+    vx:(Math.random()-.5)*11,vy:-Math.random()*9-3,g:.28,w:6+Math.random()*7,h:8+Math.random()*8,
+    r:Math.random()*TAU,vr:(Math.random()-.5)*.3,c:CCOLS[i%CCOLS.length],life:110+Math.random()*70});
+  if(!cRaf)loopC();
+}
+function spawnRain(){
+  for(let i=0;i<6;i++)parts.push({x:Math.random()*innerWidth,y:-20,vx:(Math.random()-.5)*2,
+    vy:2+Math.random()*3,g:.05,w:6+Math.random()*7,h:8+Math.random()*8,
+    r:Math.random()*TAU,vr:(Math.random()-.5)*.2,c:CCOLS[i%CCOLS.length],life:260});
+  if(!cRaf)loopC();
+}
+function loopC(){
+  cRaf=requestAnimationFrame(loopC);cCtx.clearRect(0,0,cCv.width,cCv.height);
+  parts=parts.filter(p=>p.life>0&&p.y<cCv.height+60);
+  if(!parts.length){cancelAnimationFrame(cRaf);cRaf=null;return;}
+  for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.r+=p.vr;p.life--;
+    cCtx.save();cCtx.translate(p.x,p.y);cCtx.rotate(p.r);
+    cCtx.globalAlpha=Math.min(1,p.life/40);cCtx.fillStyle=p.c;
+    cCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cCtx.restore();}
+}
+
+/* ========== FONDO ========== */
+(function(){
+  const bg=$('#bg');
+  for(let i=0;i<9;i++){
+    const b=document.createElement('div');b.className='float-ball';
+    const s=30+Math.random()*70;
+    b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;top:${Math.random()*100}vh;
+      opacity:${(.07+Math.random()*.12).toFixed(2)};animation-duration:${(14+Math.random()*16).toFixed(1)}s;
+      animation-delay:${(-Math.random()*20).toFixed(1)}s`;
+    bg.appendChild(b);
+  }
+})();
+
+/* ========== INIT ========== */
+state.players.push({name:'Jugador 1',color:PCOLORS[0]},{name:'Jugador 2',color:PCOLORS[1]},{name:'Jugador 3',color:PCOLORS[2]});
+renderChips();
+</script>
+</body>
+</html>
